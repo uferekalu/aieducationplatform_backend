@@ -1,0 +1,10 @@
+const { adminAuth } = require("./middleware")
+const express = require("express")
+const { register, login, update, deleteUser, getUsers } = require("./auth")
+const router = express.Router()
+router.route("/register").post(register)
+router.route("/login").post(login)
+router.route("/update").put(adminAuth, update)
+router.route("/deleteUser").delete(adminAuth, deleteUser)
+router.route("/users").get(adminAuth, getUsers)
+module.exports = router
